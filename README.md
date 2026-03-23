@@ -43,4 +43,12 @@ Sprint 4 - 23/03/26
 -	Created a splashscreen which is the opening page of the app where signup and login buttons are available. Splashscreen is imported to routes +page.svelte. The signup and login buttons are linked to their locations in routes. Added static images same as Hapi Compound.
 -	Created components User Credentials and User Details in Lib-ui. For validation on email password, and username. Created login form and added the components to Login +page. Now when login is pressed it will display a login Form to enter username details.
 
+# Session 2
+-	Updated the UX, created logged inUser + subtitle In runes.svelte.ts that can be used dynamically anywhere in the app. Logged in user to show the users email in navbar when logged in and subtitle to label the page the user is on.
+-	Created a header, menu and navbar components. Navbar is just before logging in. Menu is when user successfully logs in which shows new navbar with logged in user which is added to +layout which only renders if logged in user is successful.
+-	Created a logout route, which sets the logged in users email to “” and returns to welcome splashscreen.
+-	Added predefined workout cards to dashboard, need to create views for the them next when button is pressed.
+-	Currently have it set to allow any email + pass to pass at login to work on the app, will update this later to allow only signed up users to access it.
+
+
 
