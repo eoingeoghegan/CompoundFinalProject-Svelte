@@ -20,14 +20,22 @@ If login fails: the input fields are cleared and an error message is displayed.
   import Message from "$lib/ui/Message.svelte";
   import UserCredentials from "$lib/ui/UserCredentials.svelte";
 
+  import {compoundService} from "$lib/services/compound-service"; 
+
   let email = $state("");
   let password = $state("");
   let message = $state("");
 
   async function login() {
-    const success = true;
-    if (success) {
+    
+    let session = await compoundService.login(email, password);
+    console.log("Session received:", session);
+    if (session) {
       loggedInUser.email = email;
+      loggedInUser.name = session.name;
+      loggedInUser._id = session._id;
+      localStorage.compound = JSON.stringify(loggedInUser);
+      console.log(`Session: ${JSON.stringify(session)}`);
       goto("/dashboard");
     } else {
       email = "";
@@ -37,10 +45,17 @@ If login fails: the input fields are cleared and an error message is displayed.
   }
 </script>
 
-<div class="box">
-  {#if message}
-    <Message {message} />
-  {/if}
+{#if message}
+  <Message {message} />
+{/if}
+<form on:submit|preventDefault={login}>
   <UserCredentials bind:email bind:password />
-  <button onclick={() => login()} class="button is-primary">Log In</button>
-</div>
+  <button class="button is-success is-fullwidth">Log In</button>
+</form>
+
+
+ 
+      
+     
+   
+  
