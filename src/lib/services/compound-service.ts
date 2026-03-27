@@ -3,8 +3,8 @@ import type { Session, User, Workout, Exercise } from "$lib/types/compound-types
 import { loggedInUser, currentWorkouts } from "$lib/runes.svelte";
 
 export const compoundService = {
-  baseUrl: "http://localhost:3000",
-   //baseUrl: "https://compoundfinalproject.onrender.com",
+  //baseUrl: "http://localhost:3000",
+  baseUrl: "https://compoundfinalproject.onrender.com",
   /**
    * 
    *
